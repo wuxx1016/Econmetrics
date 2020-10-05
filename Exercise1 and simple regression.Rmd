@@ -1,0 +1,129 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+1.Suppose you are the lottery fairy in a weekly lottery, where  6 out of  49 unique numbers are drawn.
+
+Instructions:
+  
+Draw the winning numbers for this week.
+
+```{r}
+set.seed(123)
+
+#[1] 15 38 20 41 43  3
+
+```
+
+2. Consider a random variable X with probability density function (PDF)
+$$f_X(x) = \frac{x}{4}e^{-x^2/8}, x\geq 0$$
+  Define the PDF from above as a function f(). exp(a) computes $e^a$
+  Check whether the function you have defined is indeed a PDF.
+```{r}
+# define the PDF
+
+```
+
+3. Compute the expected value and the variance of the random variable X considered in the previous exercise.
+  The PDF f() from the previous exercise is available in your working environment.
+  Instructions:
+  Define a suitable function ex() which integrates to the expected value of  X.
+  Compute the expected value of  X. 
+  Store the result in expected_value.
+  Define a suitable function ex2() which integrates to the expected value of  X2.
+  Compute the variance of  X. 
+  Store the result in variance.
+```{r}
+
+```
+4. Let 
+$$Y \sim N(2,12)$$
+  Generate 10 random numbers from this distribution
+```{r}
+set.seed(123)
+
+```
+
+
+5. Consider the following alternative estimator for $\mu_y$, the mean of the $Y_i$
+$$\tilde{Y}=\frac{1}{n-1}\sum \limits_{i=1}^n Y_i$$
+In this exercise we will illustrate that this estimator is a biased estimator for $\mu_y$
+Define a function Y_tilde that implements the estimator above.
+Randomly draw 5 observations from the  N(10,25) distribution and compute an estimate using Y_tilde(). Repeat this procedure 10000 times and store the results in est_biased.
+Plot a histogram of est_biased.
+Add a red vertical line at  μ=10 using the function abline().
+
+```{r}
+```
+
+\section{Simple Linear Regression}
+
+consider the following combinations of average test score and the average student-teacher ratio in some fictional school districts.
+```{r}
+# Create sample data
+STR <- c(15, 17, 19, 20, 22, 23.5, 25)
+TestScore <- c(680, 640, 670, 660, 630, 660, 635) 
+
+# Print out sample data
+STR
+#> [1] 15.0 17.0 19.0 20.0 22.0 23.5 25.0
+TestScore
+#> [1] 680 640 670 660 630 660 635
+```
+To build simple linear regression model, we hypothesize that the relationship between dependent and independent variable is linear, formally:
+$$Y = a+bX$$
+```{r}
+# create a scatterplot of the data
+plot(TestScore ~ STR)
+
+# add the systematic relationship to the plot
+abline(a = 713, b = -3)
+```
+
+In order to account for these differences between observed data and the systematic relationship, we extend our model from above by an error term  u which captures additional random effects. Put differently,  u accounts for all the differences between the regression line and the actual observed data. Beside pure randomness, these deviations could also arise from measurement errors or, as will be discussed later, could be the consequence of leaving out other factors that are relevant in explaining the dependent variable.
+
+$$TestScore = \beta_0 + \beta_1 \times STR + \text{other factors}$$
+$$Y_i = \beta_0 + \beta_1 X_i + u_i.$$
+\subsection{Estimating the Coefficients of the Linear Regression Model}
+In practice, the intercept  β0 and slope  β1 of the population regression line are unknown. Therefore, we must employ data to estimate both unknown parameters. 
+
+Example1. We want to relate test scores to student-teacher ratios measured in Californian schools. The test score is the district-wide average of reading and math scores for fifth graders. Again, the class size is measured as the number of students divided by the number of teachers (the student-teacher ratio). As for the data, the California School data set (CASchools) comes with an R package called AER, an acronym for Applied Econometrics with R (Kleiber and Zeileis 2020). After installing the package with install.packages(“AER”) and attaching it with library(AER) the data set can be loaded using the function data().
+
+```{r}
+## # install the AER package (once)
+## install.packages("AER")
+## 
+## # load the AER package
+library(AER)
+
+# load the the data set in the workspace
+data(CASchools)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
